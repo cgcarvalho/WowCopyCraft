@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bluw6md5spb4h"]
+
+[ext_resource type="Script" uid="uid://b2sk0xubrag8o" path="res://Components/progress_bar.gd" id="1_ersa7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ersa7"]
+bg_color = Color(0.682353, 0.435294, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsj16"]
+bg_color = Color(0.215686, 1, 0.309804, 1)
+
+[node name="ProgressBar" type="Node"]
+script = ExtResource("1_ersa7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 811.0
+offset_top = 38.0
+offset_right = 1066.0
+offset_bottom = 65.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ersa7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dsj16")
+metadata/_edit_use_anchors_ = true

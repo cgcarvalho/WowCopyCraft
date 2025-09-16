@@ -1,0 +1,30 @@
+extends Node
+
+
+var progressBar : ProgressBar
+var heroType : Character.HeroType
+
+
+func start(ht : Character.HeroType, totalLife : int) -> void:
+	heroType = ht
+	#progressBar.max_value = totalLife
+	progressBar.value = totalLife
+
+func _ready() -> void:
+	progressBar = $CanvasLayer.get_node("ProgressBar")
+	showProgressBar(false)
+	
+func showProgressBar(show) -> void:
+	progressBar.visible = show 
+	if heroType == Character.HeroType.HERO:
+		progressBar.position.x = 55
+		progressBar.position.y = 38
+	if heroType == Character.HeroType.ENEMY:
+		progressBar.position.x = 811
+		progressBar.position.y = 38
+	
+
+
+func updateValue(value) -> void:
+	var currentValue = progressBar.get_value()
+	progressBar.value = currentValue - value
