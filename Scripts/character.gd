@@ -74,6 +74,7 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.pressed:
 				charProgressBar.showProgressBar(false)
+	
 
 func addSkills() -> void:
 	if "skill_1" in skillList:
@@ -81,8 +82,6 @@ func addSkills() -> void:
 		add_child(loadSkill)
 		skillList["skill_1"] = loadSkill
 		skillList["skill_1"].start()
-		
-		
 
 	
 func processSkills(delta):
