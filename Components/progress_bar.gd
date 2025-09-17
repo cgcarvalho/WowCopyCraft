@@ -7,7 +7,7 @@ var heroType : Character.HeroType
 
 func start(ht : Character.HeroType, totalLife : int) -> void:
 	heroType = ht
-	#progressBar.max_value = totalLife
+	progressBar.max_value = totalLife
 	progressBar.value = totalLife
 
 func _ready() -> void:
@@ -26,5 +26,4 @@ func showProgressBar(show) -> void:
 
 
 func updateValue(value) -> void:
-	var currentValue = progressBar.get_value()
-	progressBar.value = currentValue - value
+	progressBar.value = value

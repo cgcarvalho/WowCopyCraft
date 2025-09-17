@@ -97,5 +97,8 @@ func processSkills(delta):
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print("oiii")
-	pass # Replace with function body.
+	
+	if area is Skill:
+		var skill = area as Skill
+		charCurrentLife += -skill.skillBaseDamage
+		charProgressBar.updateValue(charCurrentLife)
