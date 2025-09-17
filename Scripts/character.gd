@@ -26,12 +26,8 @@ var charType : HeroType
 var skillList : Dictionary[String, Skill] 
 
 
-func start(ht : HeroType, cl : int, nm : String):
+func start():
 	screen_size = get_viewport_rect().size
-	
-	charName = nm
-	charCurrentLife = cl
-	charType = ht
 	
 	addSkills()
 	startProgressBar()
