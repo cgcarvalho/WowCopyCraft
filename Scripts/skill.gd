@@ -5,19 +5,14 @@ extends Area2D
 
 #Basic Stats
 var skillName : String
-
 var skillBaseDamage : float
 
 var scenePath : String
 
-var skillSprite : AnimatedSprite2D
-
 var hold : bool = false
-var casterPosition
 var targetPosition
 
 func start():
-	skillSprite = $AnimatedSprite2D
 	showSkill(false)
 
 func _process(delta):
@@ -32,7 +27,6 @@ func _process(delta):
 
 
 func cast(gb):
-	$AnimatedSprite2D.stop()
 	global_position = gb
 	targetPosition = Vector2(700, 185)
 	hold = true
@@ -40,9 +34,4 @@ func cast(gb):
 
 
 func showSkill(show) -> void:
-	skillSprite.visible = show 
-
-
-
-func _on_area_entered(area: Area2D) -> void:
-	print("shadow bolt" + " " + area.to_string())
+	$AnimatedSprite2D.visible = show 

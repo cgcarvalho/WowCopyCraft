@@ -3,7 +3,6 @@
 class_name Character
 
 extends Area2D
-signal hit
 
 enum HeroType {HERO, ENEMY}
 @export var speed = 400 # How fast the player will move (pixels/sec).
@@ -16,7 +15,6 @@ var charCurrentLife: int
 
 #Basic Stats
 var charName: String
-var charmovement: int
 
 #Target
 var charCurrentTarget : Character
