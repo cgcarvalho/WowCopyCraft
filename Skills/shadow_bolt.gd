@@ -10,4 +10,5 @@ func _ready() -> void:
 	scenePath = filePath
 	skillName = "Shadow Bolt"
 	skillBaseDamage = 10
+	skillType = SkillType.DIRECT
 	

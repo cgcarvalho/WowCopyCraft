@@ -6,8 +6,10 @@ extends Area2D
 
 enum HeroType {HERO, ENEMY}
 @export var speed = 400 # How fast the player will move (pixels/sec).
+signal targeted
 var screen_size 
 
+#region Character Properties
 #HP
 var charProgressBar
 var charTotalLife: int
@@ -23,18 +25,49 @@ var charType : HeroType
 #Skills
 var skillList : Dictionary[String, Skill] 
 
+#endregion
 
+#region Start
 func start():
 	screen_size = get_viewport_rect().size
-	
-	addSkills()
+
+	registerEvents()
 	startProgressBar()
 
+func registerEvents():
+	if charType == HeroType.HERO:
+		for child in get_parent().get_children(false):
+			child.connect("targeted", Callable(self, "on_targeted"))
+
+func startProgressBar():
+	charProgressBar = preload("res://Components/progressBar.tscn").instantiate().duplicate()
+	add_child(charProgressBar)
+	charProgressBar.start(charType, charCurrentLife)
+
+#endregion
+
+#region Events
+func on_targeted(target):
+	charCurrentTarget = target
+	
 func _process(delta):
-	processoMoviment(delta)
+	processMoviment(delta)
 	processSkills(delta)
 
-func processoMoviment(delta):
+func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				charProgressBar.showProgressBar(true)
+				targeted.emit(self)
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			if event.pressed:
+				charProgressBar.showProgressBar(false)
+	
+#endregion
+
+#region Process
+func processMoviment(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if charType == HeroType.HERO:
 		if Input.is_action_pressed("move_right"):
@@ -54,45 +87,25 @@ func processoMoviment(delta):
 	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
-	
-func startProgressBar():
-	charProgressBar = preload("res://Components/progressBar.tscn").instantiate().duplicate()
-	add_child(charProgressBar)
-	charProgressBar.start(charType, charCurrentLife)
-	
-func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				charProgressBar.showProgressBar(true)
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			if event.pressed:
-				charProgressBar.showProgressBar(false)
-	
 
-func addSkills() -> void:
-	if "skill_1" in skillList:
-		var loadSkill = load(skillList["skill_1"].filePath).instantiate().duplicate()
-		add_child(loadSkill)
-		skillList["skill_1"] = loadSkill
-		skillList["skill_1"].start()
-
-	
 func processSkills(delta):
-	if skillList.has("skill_1") and Input.is_action_pressed("skill_1"):
-		skillList["skill_1"].cast(global_position)
-		
-	if Input.is_action_pressed("skill_2"):
-		pass
-	if Input.is_action_pressed("skill_3"):
-		pass
-	if Input.is_action_pressed("skill_4"):
-		pass
-
-
-func _on_area_entered(area: Area2D) -> void:
+	var loadSkill = null
 	
-	if area is Skill:
-		var skill = area as Skill
-		charCurrentLife += -skill.skillBaseDamage
-		charProgressBar.updateValue(charCurrentLife)
+	if charCurrentTarget != null:
+		if skillList.has("skill_1") and Input.is_action_just_released("skill_1"):
+			loadSkill = load(skillList["skill_1"].filePath).instantiate().duplicate()
+			
+		if skillList.has("skill_2") and Input.is_action_just_released("skill_2"):
+			loadSkill = load(skillList["skill_2"].filePath).instantiate().duplicate()
+			
+		if Input.is_action_just_released("skill_3"):
+			pass
+		if Input.is_action_just_released("skill_4"):
+			pass
+	
+		if loadSkill != null:
+			loadSkill.start(self)
+			add_child(loadSkill)
+			loadSkill.cast(charCurrentTarget)
+
+#endregion

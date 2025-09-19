@@ -17,3 +17,6 @@ func addSkillsChar() -> void:
 	var skill1 = ShadowBolt.new()
 	skillList["skill_1"] = skill1
 	
+	var skill2 = Corruption.new()
+	skillList["skill_2"] = skill2
+	

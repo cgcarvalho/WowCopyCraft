@@ -33,5 +33,3 @@ frame_progress = 0.718103
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8.33334, 11.6666)
 shape = SubResource("RectangleShape2D_sweqy")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
