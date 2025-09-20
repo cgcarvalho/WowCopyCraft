@@ -42,7 +42,7 @@ func registerEvents():
 			child.connect("targeted", Callable(self, "on_targeted"))
 
 func startProgressBar():
-	charProgressBar = preload("res://Components/progressBar.tscn").instantiate().duplicate()
+	charProgressBar = preload("res://Components/ProgressBar.tscn").instantiate().duplicate()
 	add_child(charProgressBar)
 	charProgressBar.start(charType, charCurrentLife)
 

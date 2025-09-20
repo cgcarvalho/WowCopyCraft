@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cu1rh0ubkgqkc"]
 
-[ext_resource type="Script" uid="uid://d23u4ubg0phua" path="res://Chars/heroes/SirGura.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://d23u4ubg0phua" path="res://Chars/Heroes/SirGura.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://c8epoq35bc3bo" path="res://Art/Chars/Sir Gura Targao/stand.png" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dujsxfvk8wlvx" path="res://Art/Chars/Sir Gura Targao/walk.png" id="2_i3pqv"]
 

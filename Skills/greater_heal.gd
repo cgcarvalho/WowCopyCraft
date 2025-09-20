@@ -3,7 +3,7 @@ class_name GreaterHeal
  
 extends Skill
 
-const filePath : String = "res://Skills/greater_heal.tscn"
+const filePath : String = "res://Skills/Greater_heal.tscn"
 
 
 func _ready() -> void:

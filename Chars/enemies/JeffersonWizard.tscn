@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://crkcgd3ck1uwn"]
 
 [ext_resource type="Texture2D" uid="uid://m8pfy1uytj5h" path="res://Art/Chars/Jefferson - The Wizard/Jefferson.png" id="1_nmj0p"]
-[ext_resource type="Script" uid="uid://bd3ib6100srx6" path="res://Chars/enemies/jefferson_wizard.gd" id="1_rdow1"]
+[ext_resource type="Script" uid="uid://bd3ib6100srx6" path="res://Chars/Enemies/Jefferson_wizard.gd" id="1_rdow1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cepvb"]
 animations = [{

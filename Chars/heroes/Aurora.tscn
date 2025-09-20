@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cfv03flndqef7"]
 
-[ext_resource type="Script" uid="uid://c566p5fatp3xj" path="res://Chars/heroes/aurora.gd" id="1_tvsvk"]
+[ext_resource type="Script" uid="uid://c566p5fatp3xj" path="res://Chars/Heroes/Aurora.gd" id="1_tvsvk"]
 [ext_resource type="Texture2D" uid="uid://brua80axhmmbu" path="res://Art/Chars/Aurora - Warlock/AuroraStand.png" id="2_m462g"]
 [ext_resource type="Texture2D" uid="uid://3xh0ke3wxk6w" path="res://Art/Chars/Aurora - Warlock/AuroraWalk1.png" id="3_yobf5"]
 [ext_resource type="Texture2D" uid="uid://cqyfdd6f0wkti" path="res://Art/Chars/Aurora - Warlock/AuroraWalk2.png" id="4_7ju31"]
