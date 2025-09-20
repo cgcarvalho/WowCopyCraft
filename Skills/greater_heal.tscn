@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8q000hqgkutf"]
+
+[ext_resource type="Script" uid="uid://bsjxekj4q0350" path="res://Skills/greater_heal.gd" id="1_eegu2"]
+[ext_resource type="Texture2D" uid="uid://c2p4s52r06fxi" path="res://Art/Skills/heal1.png" id="2_hj21t"]
+[ext_resource type="Texture2D" uid="uid://opaxpd7oyygr" path="res://Art/Skills/heal2.png" id="3_beto8"]
+[ext_resource type="Texture2D" uid="uid://0m66rjd4ds1d" path="res://Art/Skills/heal3.png" id="4_kt60o"]
+[ext_resource type="Texture2D" uid="uid://cbwn3e6w1tijv" path="res://Art/Skills/heal4.png" id="5_bxd8e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vpyll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hj21t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_beto8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kt60o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bxd8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bxd8e")
+}],
+"loop": false,
+"name": &"heal",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgist"]
+size = Vector2(253, 702)
+
+[node name="GreaterHeal" type="Area2D"]
+script = ExtResource("1_eegu2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.839216)
+scale = Vector2(1.8, 1.8)
+sprite_frames = SubResource("SpriteFrames_vpyll")
+animation = &"heal"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -187)
+shape = SubResource("RectangleShape2D_vgist")

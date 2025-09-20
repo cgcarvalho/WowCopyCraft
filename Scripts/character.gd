@@ -98,9 +98,10 @@ func processSkills(delta):
 		if skillList.has("skill_2") and Input.is_action_just_released("skill_2"):
 			loadSkill = load(skillList["skill_2"].filePath).instantiate().duplicate()
 			
-		if Input.is_action_just_released("skill_3"):
-			pass
-		if Input.is_action_just_released("skill_4"):
+		if skillList.has("skill_3") and Input.is_action_just_released("skill_3"):
+			loadSkill = load(skillList["skill_3"].filePath).instantiate().duplicate()
+		
+		if skillList.has("skill_4") and Input.is_action_just_released("skill_4"):
 			pass
 	
 		if loadSkill != null:
