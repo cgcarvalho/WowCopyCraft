@@ -70,6 +70,10 @@ func processHeal(delta) -> void:
 	else:
 		get_parent().remove_child(self)
 		skillTarget.charCurrentLife += skillBaseHeal
+		
+		if skillTarget.charCurrentLife > skillTarget.charTotalLife:
+			skillTarget.charCurrentLife = skillTarget.charTotalLife
+		
 		skillTarget.charProgressBar.updateValue(skillTarget.charCurrentLife)
 #endregion
 
