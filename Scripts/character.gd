@@ -47,7 +47,9 @@ func startProgressBar():
 #endregion
 
 #region Events
-func on_targeted(target):
+func on_targeted(target : Character):
+	if charCurrentTarget != null and charCurrentTarget != target:
+		charCurrentTarget.charProgressBar.showProgressBar(false)
 	charCurrentTarget = target
 	
 func _process(delta):
@@ -102,7 +104,7 @@ func processSkills(delta):
 			loadSkill = load(skillList["skill_3"].filePath).instantiate().duplicate()
 		
 		if skillList.has("skill_4") and Input.is_action_just_released("skill_4"):
-			pass
+			loadSkill = load(skillList["skill_4"].filePath).instantiate().duplicate()
 	
 		if loadSkill != null:
 			loadSkill.start(self)
