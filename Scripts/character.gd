@@ -5,6 +5,7 @@ class_name Character
 extends Area2D
 
 enum HeroType {HERO, ENEMY}
+enum PlayerNumber {PLAYER1, PLAYER2, PLAYER3, PLAYER4}
 @export var speed = 400 # How fast the player will move (pixels/sec).
 signal targeted
 var screen_size 
@@ -21,6 +22,7 @@ var charName: String
 #Target
 var charCurrentTarget : Character
 var charType : HeroType
+var charPlayerNumber : PlayerNumber
 
 #Skills
 var skillList : Dictionary[String, Skill] 
@@ -71,7 +73,7 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 #region Process
 func processMoviment(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
-	if charType == HeroType.HERO:
+	if charType == HeroType.HERO and charPlayerNumber == PlayerNumber.PLAYER1:
 		if Input.is_action_pressed("move_right"):
 			velocity.x += 1
 		if Input.is_action_pressed("move_left"):
@@ -93,7 +95,7 @@ func processMoviment(delta):
 func processSkills(delta):
 	var loadSkill = null
 	
-	if charCurrentTarget != null:
+	if charCurrentTarget != null and charPlayerNumber == PlayerNumber.PLAYER1:
 		if skillList.has("skill_1") and Input.is_action_just_released("skill_1"):
 			loadSkill = load(skillList["skill_1"].filePath).instantiate().duplicate()
 			

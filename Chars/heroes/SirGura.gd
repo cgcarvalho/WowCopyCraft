@@ -8,6 +8,7 @@ func _ready():
 	charType = Character.HeroType.HERO
 	charTotalLife = 100
 	charCurrentLife = 100
+	charPlayerNumber = PlayerNumber.PLAYER1
 	
 	addSkillsChar()
 	start()
